@@ -1,0 +1,4 @@
+#showModal {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,5 +1,7 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import axios, {AxiosResponse} from 'axios';
+//import {ModalComponent} from '../modal/modal.component';
+// import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
@@ -24,6 +26,9 @@ export class BillsComponent implements OnInit, AfterViewInit {
   userId: string = '';
   billsArray: BillingInterface[] = [];
   flag = false;
+  obj! : BillingInterface;
+
+
 
   displayedColumns: string[] = ['index', 'billingType', 'amount', 'date'];
   dataSource = new MatTableDataSource<BillingInterface>();
@@ -83,7 +88,18 @@ export class BillsComponent implements OnInit, AfterViewInit {
     });
   }
 
-  async fetchUsersBills(): Promise<boolean> {
+  setDataToPassOnModal(Obj : any) : BillingInterface {
+    this.obj = {
+      userId : this.userId,
+      index : Obj.index,
+      date : Obj.date,
+      amount : Obj.amount,
+      billingType : Obj.billingType
+    }
+    return this.obj;
+  }
+
+  protected async fetchUsersBills(): Promise<boolean> {
     //console.log(this.userId);
     let flag: boolean = false;
     const data = await axios.get(`http://localhost:3000/billingApp/bills/${this.userId}`).then((it: AxiosResponse) => {

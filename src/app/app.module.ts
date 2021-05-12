@@ -11,12 +11,15 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ShowModalComponent } from './show-modal/show-modal.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     BillsComponent,
-    DashboardComponent
+    DashboardComponent,
+    ShowModalComponent,
   ],
   imports: [
     BrowserModule,

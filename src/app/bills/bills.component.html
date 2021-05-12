@@ -8,25 +8,29 @@
       <!-- Position Column -->
       <ng-container matColumnDef="index">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> No.</th>
-        <td mat-cell *matCellDef="let element"> {{element.index}} </td>
+        <td mat-cell *matCellDef="let element" (click)="setDataToPassOnModal(element)" data-toggle="modal" data-target="#exampleModal">
+          {{element.index}} </td>
       </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="billingType">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Billing Type</th>
-        <td mat-cell *matCellDef="let element"> {{element.billingType}} </td>
+        <td mat-cell *matCellDef="let element" (click)="setDataToPassOnModal(element)" data-toggle="modal" data-target="#exampleModal">
+          {{element.billingType}} </td>
       </ng-container>
 
       <!-- Weight Column -->
       <ng-container matColumnDef="amount">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount</th>
-        <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+        <td mat-cell *matCellDef="let element" (click)="setDataToPassOnModal(element)" data-toggle="modal" data-target="#exampleModal">
+          {{element.amount}} </td>
       </ng-container>
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Date</th>
-        <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+        <td mat-cell *matCellDef="let element" (click)="setDataToPassOnModal(element)" data-toggle="modal" data-target="#exampleModal">
+          {{element.date}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -34,6 +38,10 @@
     </table>
     <mat-paginator [pageSizeOptions]="[4, 8, 20]" showFirstLastButtons></mat-paginator>
   </div>
+
+<!--  Data will be given to modal from here....-->
+  <app-show-modal [msgFromParent]="obj"></app-show-modal>
+
 
 
   <!--  <table class="table table-dark">-->
